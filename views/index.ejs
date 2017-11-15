@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+    <style>
+    #memberlist {
+      list-style-type:none;
+    }
+    </style>
+  </head>
+  <body>
+    <form method="post" action="/member">
+      <label>Nama : </label>
+      <input type="text" name="nama" /><br />
+      <label>Kelas : </label>
+      <input type="text" name="kelas"  /><br />
+      <label>Jam Kuliah : </label>
+      <select name="jam">
+        <option value="pagi">Pagi</option>
+        <option value="malam">Malam</option>
+      </select><br />
+      <input type="submit" value="Add"/>
+    </form>
+    <ul>
+      <% for(i = 0; i < member.length ;i++){ %>
+      <li>
+        <span><%= member[i].nama %></span>
+        <span><%= member[i].kelas %></span>
+        <span><%= member[i].jamkuliah %></span>
+        <span><button type="submit" value="Delete" formaction="/delete/<%= member[i].nama %>">Delete</button></span>
+      </li>
+      <% } %>
+    </ul>
+
+  </body>
+</html>
